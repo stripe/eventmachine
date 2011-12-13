@@ -282,6 +282,16 @@ extern "C" const unsigned long evma_create_unix_domain_server (const char *filen
 	return EventMachine->CreateUnixDomainServer (filename);
 }
 
+/**********************
+evma_create_tcp_server
+**********************/
+
+extern "C" const unsigned long evma_reuse_server (int descriptor)
+{
+	ensure_eventmachine("evma_reuse_server");
+	return EventMachine->OutputBinding (descriptor);
+}
+
 /*************************
 evma_open_datagram_socket
 *************************/

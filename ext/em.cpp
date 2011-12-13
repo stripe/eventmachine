@@ -1559,15 +1559,7 @@ const unsigned long EventMachine_t::CreateTcpServer (const char *server, int por
 		}
 	}
 
-	{ // Looking good.
-		AcceptorDescriptor *ad = new AcceptorDescriptor (sd_accept, this);
-		if (!ad)
-			throw std::runtime_error ("unable to allocate acceptor");
-		Add (ad);
-		output_binding = ad->GetBinding();
-	}
-
-	return output_binding;
+	return OutputBinding(sd_accept);
 
 	fail:
 	if (sd_accept != INVALID_SOCKET)
@@ -1575,6 +1567,14 @@ const unsigned long EventMachine_t::CreateTcpServer (const char *server, int por
 	return 0;
 }
 
+const unsigned long EventMachine_t::OutputBinding(int sd_accept)
+{
+	AcceptorDescriptor *ad = new AcceptorDescriptor (sd_accept, this);
+	if (!ad)
+		throw std::runtime_error ("unable to allocate acceptor");
+	Add (ad);
+	return ad->GetBinding();
+}
 
 /**********************************
 EventMachine_t::OpenDatagramSocket

@@ -63,6 +63,7 @@ extern "C" {
 
 	void evma_stop_tcp_server (const unsigned long signature);
 	const unsigned long evma_create_tcp_server (const char *address, int port);
+	const unsigned long evma_reuse_server (int descriptor);
 	const unsigned long evma_create_unix_domain_server (const char *filename);
 	const unsigned long evma_open_datagram_socket (const char *server, int port);
 	const unsigned long evma_open_keyboard();

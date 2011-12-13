@@ -82,6 +82,7 @@ class EventMachine_t
 		const unsigned long ConnectToUnixServer (const char *);
 
 		const unsigned long CreateTcpServer (const char *, int);
+		const unsigned long OutputBinding (int);
 		const unsigned long OpenDatagramSocket (const char *, int);
 		const unsigned long CreateUnixDomainServer (const char*);
 		const unsigned long OpenKeyboard();
